@@ -20,7 +20,7 @@
 				  "media/images/plast_hand_with_gun.png"]
 		};
 
-	// Lounch first scene
+	// Launch first scene
 	Crafty.timer.steptype('variable', global.fpsLimit);
 	Crafty.init(global.gameHeight, global.gameWidth);
 	Crafty.background(global.backgroundColorParam);
