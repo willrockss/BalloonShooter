@@ -3,8 +3,8 @@ Crafty.c('fpsLabelObject', {
        this.requires("2D");
        this.requires("DOM");
        this.requires("Text");
-       this.attr({x:0, y:0, w: 300, frameCount: 0, fps: 0,  lastTime: Date.now()});
-       this.text('FPS: N\A');
+       this.attr({x:0, y:0, w:300, frameCount:0 , fps:0 ,  lastTime:Date.now()});
+       this.text('FPS: N/A');
        this.bind(
        'EnterFrame',function() {
          this.frameCount++;

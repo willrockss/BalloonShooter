@@ -6,7 +6,7 @@ Crafty.c('hand_game_object', {
 	   this.requires("Collision"); 
 	   this.requires("MouseFace"); 
 	   this.requires("plast_hand_with_gun_spr");
-	   this.origin(5, 15);
+	   this.origin(3, 9);
 	   this.flipped = false;
 
 	   this.bind("MouseMoved", function(e) { 
@@ -17,6 +17,7 @@ Crafty.c('hand_game_object', {
 		  this.mouse_x = e.pos.x;
 		  this.mouse_y = e.pos.y;
 		  this.rotation = e.grad;
+
 
           if (this.flipped == false && this.mouse_x < this.x) {
             this.flipped = true;

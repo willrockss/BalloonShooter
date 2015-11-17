@@ -9,7 +9,7 @@
 	   //this.requires("WiredHitBox");
 	   this.requires("KillableObj"); 
 	   this.requires("plast_balloon_spr");
-	   this.attr({x: 0, y: 0}); 
+	   this.attr({x:0, y:0, z:2});
 
 	   this.collision(new Crafty.polygon(this._collisionPoly));
 	   this.speed = 1;

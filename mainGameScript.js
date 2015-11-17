@@ -14,7 +14,7 @@
 		var assetsObj = {
 		"images": [
 				  "media/images/plast_balloon.png",
-				  "media/images/OSDM_Fnt32x32_SyntaxTerror-Copy2.png",
+				  "media/images/NumbersFnt64x64.png",
 				  "media/images/girl.png",
 				  "media/images/bullet.png",
 				  "media/images/plast_hand_with_gun.png"]
