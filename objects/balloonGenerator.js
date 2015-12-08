@@ -1,5 +1,6 @@
 	Crafty.c('BalloonGeneratorObj', { 
-		init: function() { 
+		init: function() {
+		    this.requires("2D");//for being destroyed automatically
 			this.current_time = 0,
 			this.creation_interval = 1000,
 		    this.bind("EnterFrame", function() { 

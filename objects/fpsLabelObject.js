@@ -3,10 +3,10 @@ Crafty.c('fpsLabelObject', {
        this.requires("2D");
        this.requires("DOM");
        this.requires("Text");
+       this.requires("Persist");
        this.attr({x:0, y:0, w:300, frameCount:0 , fps:0 ,  lastTime:Date.now()});
        this.text('FPS: N/A');
-       this.bind(
-       'EnterFrame',function() {
+       this.bind('EnterFrame',function() {
          this.frameCount++;
          if (Date.now() - this.lastTime > 1000) {
             this.lastTime = Date.now();
@@ -16,5 +16,4 @@ Crafty.c('fpsLabelObject', {
          }
        });
     }
-
 });

@@ -1,7 +1,7 @@
 		var sprites_config = {}; 
 
 		var global = {
-			count: 0,
+			score: 0,
 			
 			fpsLimit: 60,
 			
@@ -12,6 +12,11 @@
 		}; 
 
 		var assetsObj = {
+        "audio": {
+            "shot": "media/audio/shot.mp3",
+            "boom": "media/audio/boom.wav",
+            "mainSceneMusic" : "media/audio/Ninja 9000 - Goblin Roadtrip.mp3"
+        },
 		"images": [
 				  "media/images/plast_balloon.png",
 				  "media/images/NumbersFnt64x64.png",

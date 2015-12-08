@@ -11,10 +11,12 @@ Crafty.c('scoreLabelObject', {
 	   this.text('0');
 	   this.prevValue = -1;
 	   this.bind("EnterFrame", function() { 
-			if (this.prevValue != global.count) {
-				this.prevValue = global.count;
-				console.log("Score: " + global.count);    
-				this.text(global.count);
+			if (this.prevValue != global.score) {
+				this.prevValue = global.score;
+				if (global.isTraceDebugEnabled) {
+				    console.log("Score: " + global.score);
+				}
+				this.text(global.score);
 			}
 	   }); 
 	}

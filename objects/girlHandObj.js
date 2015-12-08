@@ -37,7 +37,9 @@ Crafty.c('hand_game_object', {
 			if (this.flipped) {angleOffset *= -1;}
 
 			var bullet = instance_create(this.x + this._origin.x + Math.cos(this.getAngle()  + angleOffset) *hand_length, this.y  + this._origin.y + Math.sin(this.getAngle() + angleOffset) * hand_length, 'BulletObj');
-			 bullet.angle = this.getAngle();
+			bullet.angle = this.getAngle();
+
+			Crafty.audio.play('shot');
 		  }
 	   });
 	}

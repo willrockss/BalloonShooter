@@ -1,9 +1,4 @@
-Crafty.scene("mainScene", function() {
-    Crafty.e("fpsLabelObject");
-
-    Crafty.e("BalloonObj").attr({x: 76, y:238});
-    Crafty.e("BalloonObj").attr({x: 246, y:219});
-    Crafty.e("BalloonObj").attr({x: 158, y:254});
+Crafty.defineScene("mainScene", function() {
 
     Crafty.e("BalloonGeneratorObj").attr({x: 0, y:0});
 
@@ -16,4 +11,10 @@ Crafty.scene("mainScene", function() {
     girl.shift(-girl._origin.x, -girl._origin.y); //TODO Put this functionality into X\Y setters
     girl.attach(hand);
 
+    Crafty.audio.play('mainSceneMusic', -1);
+
+}, function() {
+    if (Crafty.audio.isPlaying('mainSceneMusic')) {
+        Crafty.audio.stop('mainSceneMusic');
+    }
 });

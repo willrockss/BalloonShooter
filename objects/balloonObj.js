@@ -23,19 +23,28 @@
 	   }); 
 	   this.bind("EnterFrame", function() { 
 		  this.y += this.speed;
+
+		  //TODO Refactor this method. Move it to special StateManager object
+		  if (this.y > global.gameHeight) {
+                Crafty.enterScene('finalScene');
+		  }
 	   });
 	   this.onHit("BulletObj", this.onHitWithbullet_obj, function(e) { this.last_hit_with_bullet_obj = null;});
 	   this.bind("KeyDown", function(e) { 
 	   }); 
 	   this.bind("KeyUp", function(e) { 
-	   }); 
+	   });
+
+	   this.bind("Remove", function(){
+	       Crafty.audio.play('boom');
+	   })
 	} 
 	,
 	onHitWithbullet_obj: function(e, dontCallOther) {
 	   var otherObj = e[0].obj;
 	   if (this.last_hit_with_bullet_obj != otherObj) {
 		  //Add action code here
-		  global.count++;
+		  global.score++;
 		  this.killMe();
 		  //this.kill_me = true;
 		  if (!dontCallOther) {
