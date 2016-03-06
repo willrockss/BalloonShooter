@@ -1,7 +1,7 @@
 ﻿//TODO move this function to special network module
 function get_score_table(callback, error_callback) {
     var myRequest = new XMLHttpRequest();
-    myRequest.open('GET', '/get_score_table?reqUUID=' + (new Date().getTime()));
+    myRequest.open('GET', '/get_score_table?reqUUID=' + (new Date().getTime()) + '&user_id=' + global.user_id);
     myRequest.send(null);
 
     myRequest.onreadystatechange = function() {
@@ -24,8 +24,15 @@ function post_score() {
 }
 
 function drawScoreTable(startPoint, rowHeight, scoreArray) {
+    console.log('Drawing score table for user: ' + global.user_id);
     scoreArray.forEach(function(item, index){
-      Crafty.e("2D, DOM, Text").attr({x:startPoint.x, y:startPoint.y + index * rowHeight, w: global.gameWidth }).text(item.user_name + ' : ' + item.score);
+      var coordAttrs = {x:startPoint.x, y:startPoint.y + index * rowHeight, w: global.gameWidth };
+      var text = item.position + ') ' + item.user_name + ' : ' + item.score;
+      var labelObj = Crafty.e("2D, DOM, Text").attr(coordAttrs).text(text);
+      console.log('global.user_id: '+global.user_id+' item.user_id: ' + item.user_id);
+      if (global.user_id == item.user_id) {
+        labelObj.textColor('rgb(0, 0, 255)');
+      }
     });
 }
 
@@ -52,12 +59,12 @@ Crafty.scene("finalScene", function() {
 
         get_score_table(
             function(data){
-                console.log('Trying to draw score data: ' + data);
+                console.log('Trying to draw score data: ' + JSON.stringify(data));
                 drawScoreTable(startPoint, rowHeight, data);
             },
             function(){
                 alert('Error! Using default test array');
-                var testScoreTable = [{"user_name":"Ivan", "score": 1000}, {"user_name":"Kirill", "score": 800}, {"user_name":"Alex", "score": 900}];
+                var testScoreTable = [{"position":"1", "user_name":"Ivan", "score": 1000}, {"position":"3","user_name":"Kirill", "score": 800}, {"position":"2","user_name":"Alex", "score": 900}];
                 drawScoreTable(startPoint, rowHeight, testScoreTable);
             }
         );

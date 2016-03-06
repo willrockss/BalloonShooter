@@ -5,7 +5,7 @@
        function initVK(next) {
 			//VK SCRIPT
 			console.log('Trying to load VK API at ' + Date.now() +  '. Url is ' + document.location);
-			if (document.location.host.indexOf('localhost') != -1 || (typeof variable == 'undefined')) {
+			if (document.location.host.indexOf('localhost') != -1 || (typeof VK == 'undefined')) {
 			    console.log("It's not a VK context...");
 			    if (next) next.call(this);
 			    return;

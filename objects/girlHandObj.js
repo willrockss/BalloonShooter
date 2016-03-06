@@ -9,6 +9,8 @@ Crafty.c('hand_game_object', {
 	   this.origin(3, 9);
 	   this.flipped = false;
 
+	   this.current_time = 0;
+
 	   this.bind("MouseMoved", function(e) { 
 		  /* you can use following input params:
 		  e.grad - degrees to mouse point vector
@@ -31,15 +33,19 @@ Crafty.c('hand_game_object', {
 	   this.bind("MouseUp", function(e) { 
 		  //Add action code here
 		  if (e.button === 0) {
-			// console.log('Bullet should be created right now. Mouse(' + this.mouse_x + ', ' + this.mouse_y + ')');
-			var hand_length = 68;
-			var angleOffset = -0.15;
-			if (this.flipped) {angleOffset *= -1;}
+		    //Скорострельность на 25% выше, чем скорость создания новых шариков
+		    if (Date.now() > this.current_time + this._generator.creation_interval*0.75) {
+		        this.current_time = Date.now();
 
-			var bullet = instance_create(this.x + this._origin.x + Math.cos(this.getAngle()  + angleOffset) *hand_length, this.y  + this._origin.y + Math.sin(this.getAngle() + angleOffset) * hand_length, 'BulletObj');
-			bullet.angle = this.getAngle();
+                var hand_length = 68;
+                var angleOffset = -0.15;
+                if (this.flipped) {angleOffset *= -1;}
 
-			Crafty.audio.play('shot');
+                var bullet = instance_create(this.x + this._origin.x + Math.cos(this.getAngle()  + angleOffset) *hand_length, this.y  + this._origin.y + Math.sin(this.getAngle() + angleOffset) * hand_length, 'BulletObj');
+                bullet.angle = this.getAngle();
+
+                Crafty.audio.play('shot');
+            }
 		  }
 	   });
 	}
